@@ -4,33 +4,33 @@ from collections import deque  # Estrutura de dados fila
 from datetime import datetime, timedelta  # Manipulação de datas
 
 def cadastrar_produto():
-    print("\n___ Cadastro de Produto ___")  # Exibe título do cadastro
-    nome = input("Nome: ")  # Solicita o nome do produto
-    codigo = input("Código: ")  # Solicita o código do produto
-    peso = float(input("Peso (gramas): "))  # Solicita o peso do produto
-    data_fabricacao = input("Data de fabricação (DIA-MÊS-ANO) (DD-MM-AAAA): ")  # Solicita a data de fabricação
-    validade = input("Data de validade (DIA-MÊS-ANO) (DD-MM-AAAA): ")  # Solicita a data de validade
-    tamanho_engradado = input("Tamanho do engradado: ")  # Solicita o tamanho do engradado
-    preco_compra = float(input("Preço de compra: "))  # Solicita o preço de compra
-    preco_venda = float(input("Preço de venda: "))  # Solicita o preço de venda
-    engradado = input("Identificação do engradado: ")  # Solicita a identificação do engradado
-    lote = int(input("Lote: "))  # Solicita o número do lote
-    fornecedor = input("Fornecedor: ")  # Solicita o fornecedor
-    categoria = input("Categoria: ")  # Solicita a categoria
-    fabricante = input("Fabricante: ")  # Solicita o fabricante
-    data_cadastro = datetime.now().strftime("%d/%m/%Y %H:%M")  # Data e hora do cadastro
-    print(f"Produto cadastrado em: {data_cadastro}")  # Mostra no terminal
-    # Cria e retorna o objeto Produto com todos os dados
+    print("\n___ Cadastro de Produto ___")  
+    nome = input("Nome: ")  
+    codigo = input("Código: ")  
+    peso = float(input("Peso (gramas): "))  
+    data_fabricacao = input("Data de fabricação (DIA-MÊS-ANO) (DD-MM-AAAA): ")  
+    validade = input("Data de validade (DIA-MÊS-ANO) (DD-MM-AAAA): ")  
+    tamanho_engradado = input("Tamanho do engradado: ")  
+    preco_compra = float(input("Preço de compra: "))  
+    preco_venda = float(input("Preço de venda: "))  
+    engradado = input("Identificação do engradado: ")  
+    lote = int(input("Lote: "))  
+    fornecedor = input("Fornecedor: ")  
+    categoria = input("Categoria: ") 
+    fabricante = input("Fabricante: ")  
+    data_cadastro = datetime.now().strftime("%d/%m/%Y %H:%M")  
+    print(f"Produto cadastrado em: {data_cadastro}")  
+    # instancia e retorna c as propriedades
     return Produto(codigo, nome, peso, validade, preco_compra, preco_venda, engradado, lote, fornecedor, categoria, fabricante, data_fabricacao, tamanho_engradado, data_cadastro=data_cadastro)
 
 def remover_produto(produtos, estoque):
-    engradado_codigo = input("Digite o código do engradado a remover: ")  # Solicita o código do engradado a remover
+    engradado_codigo = input("Digite o código do engradado a remover: ")  
     encontrado = False  # Flag para saber se encontrou o engradado
     for linha in estoque:  # Percorre as prateleiras
         for pilha in linha:  # Percorre as pilhas de cada prateleira
             if engradado_codigo in pilha:  # Se o engradado está na pilha
                 pilha.remove(engradado_codigo)  # Remove o engradado da pilha
-                encontrado = True
+                encontrado = True # quer dizer que encontrou então  
     for i, produto in enumerate(produtos):  # Percorre a lista de produtos
         if produto.engradado == engradado_codigo:  # Se encontrou o produto pelo engradado
             del produtos[i]  # Remove o produto da lista
@@ -48,10 +48,6 @@ def inicializar_estoque():
     return [[[] for _ in range(5)] for _ in range(8)]
 
 def adicionar_engradado(estoque, coluna, linha, engradado):
-    """
-    Adiciona um engradado no topo da pilha (LIFO) na posição [linha][coluna].
-    Só adiciona se a pilha tiver menos de 5 engradados.
-    """
     pilha = estoque[linha][coluna]  # Seleciona a pilha
     if len(pilha) < 5:  # Se a pilha tem espaço
         pilha.append(engradado)  # Adiciona o engradado
@@ -61,9 +57,6 @@ def adicionar_engradado(estoque, coluna, linha, engradado):
         return False
 
 def remover_engradado(estoque, coluna, linha):
-    """
-    Remove e retorna o engradado do topo da pilha (LIFO) na posição [linha][coluna].
-    """
     pilha = estoque[linha][coluna]  # Seleciona a pilha
     if pilha:  # Se a pilha não está vazia
         return pilha.pop()  # Remove e retorna o topo
@@ -72,9 +65,6 @@ def remover_engradado(estoque, coluna, linha):
         return None
 
 def consultar_topo(estoque, coluna, linha):
-    """
-    Consulta o engradado do topo da pilha (LIFO) na posição [linha][coluna] sem remover.
-    """
     pilha = estoque[linha][coluna]  # Seleciona a pilha
     if pilha:  # Se a pilha não está vazia
         return pilha[-1]  # Retorna o topo
@@ -82,11 +72,11 @@ def consultar_topo(estoque, coluna, linha):
         return None
 
 def visualizar_estoque(estoque):
-    print("\n=== Estoque (8 Prateleiras x 5 lugares, pilha máx 5) ===")  # Título
+    print("\n=== Estoque (8 Prateleiras x 5 lugares, pilha máx 5) ===") 
     for i, linha in enumerate(estoque):  # Para cada prateleira
         lugares = []  # Lista para armazenar as pilhas
         for j in range(5):  # Para cada pilha
-            pilha = linha[j] if j < len(linha) and isinstance(linha[j], list) else []  # Seleciona a pilha
+            pilha = linha[j] if j < len(linha) and isinstance(linha[j], list) else []  # S
             pilha_estatica = pilha.copy()[:5] + ['-'] * (5 - len(pilha))  # Garante 5 posições
             lugares.append(pilha_estatica)  # Adiciona à lista
         print(f"Prateleira {i+1}:", lugares)  # Exibe a prateleira
@@ -128,9 +118,6 @@ class FilaPedidos:
                 print(f"{i}. {pedido}")
 
 def produtos_proximos_vencimento(produtos, dias=30, idx=0, resultado=None):
-    """
-    Retorna recursivamente uma lista de produtos com validade a vencer em até 'dias'.
-    """
     if resultado is None:
         resultado = []
     if idx >= len(produtos):
@@ -158,14 +145,9 @@ def produtos_proximos_vencimento(produtos, dias=30, idx=0, resultado=None):
         pass  # Ignora produtos com data inválida
     return produtos_proximos_vencimento(produtos, dias, idx+1, resultado)
 
-def carregar_produtos_na_matriz(produtos, estoque):
-    """
-    Garante que todos os produtos cadastrados estejam alocados na matriz de estoque.
-    Se o engradado do produto não estiver em nenhuma pilha, aloca automaticamente na próxima posição livre.
-    Salva o estoque após alocar todos os produtos.
-    """
-    alterado = False  # Flag para saber se houve alteração
-    for produto in produtos:  # Para cada produto
+def carregar_produtos_na_matriz(produtos, estoque): # ele corre pelos espaços da matriz até achar um espaço livre p encaixar o produto
+    alterado = False  
+    for produto in produtos:  
         encontrado = False
         for linha in estoque:
             for pilha in linha:
@@ -185,11 +167,11 @@ def carregar_produtos_na_matriz(produtos, estoque):
     return estoque
 
 def menu():
-    produtos = carregar_produtos()  # Carrega os produtos do arquivo
-    estoque = carregar_estoque()  # Carrega o estoque do arquivo
-    estoque = carregar_produtos_na_matriz(produtos, estoque)  # Sincroniza produtos e estoque
-    salvar_estoque(estoque)  # Garante que estoque.json seja atualizado após sincronizar
-    fila_pedidos = FilaPedidos()  # Inicializa a fila de pedidos
+    produtos = carregar_produtos()  
+    estoque = carregar_estoque()  
+    estoque = carregar_produtos_na_matriz(produtos, estoque)  
+    salvar_estoque(estoque)  
+    fila_pedidos = FilaPedidos()  #carrega os metodos 
     while True:
         print("\n=== Gerenciamento de Estoque ===")  # Menu principal
         print("1. Cadastrar produto e adicionar engradado em pilha")

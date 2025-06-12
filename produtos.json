@@ -12,7 +12,8 @@
         "categoria": "Bebida",
         "fabricante": "RefriCola",
         "data_fabricacao": null,
-        "tamanho_engradado": null
+        "tamanho_engradado": null,
+        "data_cadastro": null
     },
     {
         "codigo": "003",
@@ -27,7 +28,8 @@
         "categoria": "Alimento",
         "fabricante": "SulCereal",
         "data_fabricacao": null,
-        "tamanho_engradado": null
+        "tamanho_engradado": null,
+        "data_cadastro": null
     },
     {
         "codigo": "004",
@@ -42,7 +44,8 @@
         "categoria": "Alimento",
         "fabricante": "NorteFeij\u00c3\u00a3o",
         "data_fabricacao": null,
-        "tamanho_engradado": null
+        "tamanho_engradado": null,
+        "data_cadastro": null
     },
     {
         "codigo": "88",
@@ -57,7 +60,8 @@
         "categoria": "enlatados",
         "fabricante": "coqueiro",
         "data_fabricacao": null,
-        "tamanho_engradado": null
+        "tamanho_engradado": null,
+        "data_cadastro": null
     },
     {
         "codigo": "009",
@@ -72,7 +76,8 @@
         "categoria": "p\u00e3es",
         "fabricante": "sevenboys",
         "data_fabricacao": null,
-        "tamanho_engradado": null
+        "tamanho_engradado": null,
+        "data_cadastro": null
     },
     {
         "codigo": "255",
@@ -87,7 +92,8 @@
         "categoria": "laticineos",
         "fabricante": "nestle",
         "data_fabricacao": null,
-        "tamanho_engradado": null
+        "tamanho_engradado": null,
+        "data_cadastro": null
     },
     {
         "codigo": "389",
@@ -102,7 +108,8 @@
         "categoria": "a\u00e7ucares",
         "fabricante": "nestle",
         "data_fabricacao": null,
-        "tamanho_engradado": null
+        "tamanho_engradado": null,
+        "data_cadastro": null
     },
     {
         "codigo": "912",
@@ -117,7 +124,8 @@
         "categoria": "massas",
         "fabricante": "turma da monica",
         "data_fabricacao": "01-01-2025",
-        "tamanho_engradado": "12"
+        "tamanho_engradado": "12",
+        "data_cadastro": null
     },
     {
         "codigo": "12",
@@ -132,7 +140,8 @@
         "categoria": "doces",
         "fabricante": "ferrero",
         "data_fabricacao": "09-09-2025",
-        "tamanho_engradado": "12"
+        "tamanho_engradado": "12",
+        "data_cadastro": null
     },
     {
         "codigo": "123",
@@ -147,6 +156,23 @@
         "categoria": "laticineos",
         "fabricante": "nestle",
         "data_fabricacao": "01-01-2026",
-        "tamanho_engradado": "12"
+        "tamanho_engradado": "12",
+        "data_cadastro": null
+    },
+    {
+        "codigo": "122",
+        "nome": "aguabenta",
+        "peso": 300.0,
+        "validade": "09-09-2025",
+        "preco_compra": 0.5,
+        "preco_venda": 2.0,
+        "engradado": "A30",
+        "lote": 1,
+        "fornecedor": "gustavo",
+        "categoria": "aguas",
+        "fabricante": "glub",
+        "data_fabricacao": "09-09-2024",
+        "tamanho_engradado": "12",
+        "data_cadastro": "12/06/2025 18:35"
     }
 ]

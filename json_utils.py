@@ -17,32 +17,31 @@ def carregar_produtos(caminho='produtos.json'):
 def salvar_produtos(produtos, caminho='produtos.json'):
     dados = [vars(p) for p in produtos]  # Converte cada Produto em dicionário
     with open(caminho, 'w') as f:  # Abre o arquivo JSON para escrita
-        json.dump(dados, f, indent=4)  # Salva a lista de dicionários no arquivo, formatando com indentação
+        json.dump(dados, f, indent=4)  # Salva a lista de dicionários no arquivo
 
 # Função para salvar a matriz de estoque em um arquivo JSON
 def salvar_estoque(estoque, caminho='estoque.json'):
-    # Converte todos os elementos para listas para garantir compatibilidade com JSON
+    # Converte tudo pra lista 
     matriz_serializavel = [[list(pilha) for pilha in linha] for linha in estoque]
     with open(caminho, 'w') as f:  # Abre o arquivo JSON para escrita
         json.dump(matriz_serializavel, f)  # Salva a matriz no arquivo
 
-# Função para carregar a matriz de estoque de um arquivo JSON
+# Função p carregar a matriz 
 def carregar_estoque(caminho='estoque.json'):
     try:
         with open(caminho, 'r') as f:  # Abre o arquivo JSON para leitura
             matriz = json.load(f)  # Carrega a matriz do arquivo
-            # Garante que cada posição seja uma lista (pilha) de tamanho máximo 5
             matriz_corrigida = []
-            for linha in matriz[:8]:  # Considera apenas as primeiras 8 linhas
+            for linha in matriz[:8]:  # ajeita p os tamanhos de 8 linhas e 5 colunas 
                 nova_linha = []
-                for pilha in linha[:5]:  # Considera apenas as primeiras 5 pilhas
-                    # Garante que cada pilha tenha no máximo 5 elementos
+                for pilha in linha[:5]:  # mostra as prateleiras 
+                    # Garante que cada pilha caiba 5 engradados 
                     nova_linha.append(list(pilha)[:5])
                 # Preenche com pilhas vazias se faltar
                 while len(nova_linha) < 5:
                     nova_linha.append([])
                 matriz_corrigida.append(nova_linha)
-            # Preenche com linhas de pilhas vazias se faltar
+            # enquanto a linha for menor q 5 coloca naquela linha _
             while len(matriz_corrigida) < 8:
                 matriz_corrigida.append([[] for _ in range(5)])
             return matriz_corrigida  # Retorna a matriz corrigida
